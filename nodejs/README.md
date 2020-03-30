@@ -27,3 +27,32 @@ $ npm init -y
   "license": "ISC"
 }
 ```
+
+# Instalando o Express para Nodejs
+## O que é o express?
+É um tipo de estrutura de servidor padrão de fato para o Node.js, utilizado bastante para criação de rotas
+### E como instalar?
+Para instalar o express, basta executar o seguinte comando:
+```sh
+$ npm install express
+```
+
+> O Comando acima: npm install express vai modificar o package.json, colocando o pacote do express como uma dependência do projeto
+> Além disseo ele vai criar uma pasta chamada node_modules, é nela que todo pacote e dependência será instalado
+```sh
+{
+  "name": "nameproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+```
