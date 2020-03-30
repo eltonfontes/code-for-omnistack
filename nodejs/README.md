@@ -20,11 +20,10 @@ $ npm init -y
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./src/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-  }
+  "license": "ISC"
 }
 ```
