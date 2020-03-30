@@ -69,3 +69,54 @@ Para testar basta executar o seguinte comando:
 ```sh
 $ node index.js
 ```
+
+# Instalando o Nodemon para Nodejs
+## O que é o nodemon?
+Ele reinicia automaticamente o aplicativo do nó quando alterações de arquivo no diretório são detectadas
+### E como instalar?
+Para instalar o nodemon, basta executar o seguinte comando:
+```sh
+$ npm install nodemon -D
+```
+
+> O Comando acima: npm install nodemon -D vai modificar o package.json, colocando o pacote do nodemon como uma dependência do projeto
+> Porém como acrescentamos o "-D" a dependência será instalada como Dev, para que não seja explanado para produção essa dependência de monitoramento
+```sh
+{
+  "name": "nameproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
+
+```
+
+### Para testar o express:
+basta adicionar uma flag na tag "scripts"
+```sh
+{
+  "name": "nameproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },...
+```
+
+Para testar basta executar o seguinte comando:
+```sh
+$ npm start
+```
