@@ -7,3 +7,5 @@
 [Instalando Express para o NodeJS](https://github.com/eltonfontes/code-for-omnistack/tree/master/nodejs#instalando-o-express-para-nodejs)
 
 [Instalando Nodemon para o NodeJS](https://github.com/eltonfontes/code-for-omnistack/tree/master/nodejs#instalando-o-nodemon-para-nodejs)
+
+[Instalando Knex para o NodeJS](https://github.com/eltonfontes/code-for-omnistack/tree/master/nodejs#instalando-o-knex-para-nodejs)

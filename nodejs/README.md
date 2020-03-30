@@ -13,6 +13,7 @@ $ npm init -y
 ```
 
 > O Comando acima: npm init -y vai criar o arquivo package.json
+
 ```sh
 {
   "name": "nameproject",
@@ -39,6 +40,7 @@ $ npm install express
 
 > O Comando acima: npm install express vai modificar o package.json, colocando o pacote do express como uma dependência do projeto
 > Além disse ele vai criar uma pasta chamada node_modules, é nela que todo pacote e dependência será instalado
+
 ```sh
 {
   "name": "nameproject",
@@ -81,6 +83,7 @@ $ npm install nodemon -D
 
 > O Comando acima: npm install nodemon -D vai modificar o package.json, colocando o pacote do nodemon como uma dependência do projeto
 > Porém como acrescentamos o "-D" a dependência será instalada como Dev, para que não seja explanado para produção essa dependência de monitoramento
+
 ```sh
 {
   "name": "nameproject",
@@ -119,4 +122,101 @@ basta adicionar uma flag na tag "scripts"
 Para testar basta executar o seguinte comando:
 ```sh
 $ npm start
+```
+
+# Instalando o Knex para Nodejs
+## O que é o knex?
+Ele reinicia automaticamente o aplicativo do nó quando alterações de arquivo no diretório são detectadas
+### E como instalar?
+Para instalar o knex, basta executar o seguinte comando:
+```sh
+$ npm install knex
+
+$ npm install pg
+$ npm install sqlite3
+$ npm install mysql
+$ npm install mysql2
+$ npm install oracledb
+$ npm install mssql
+```
+
+> O Comando acima: npm install knexvai modificar o package.json, colocando o pacote do knex como uma dependência do projeto
+> Acima listo algumas instalaçãoes especificas de bancos para utilizar o mariaDB, basta utilizar a instalação do mysql
+
+### Iniciando um knex
+Para iniciar o knex, basta executar o seguinte comando:
+```sh
+$ npx knex init
+```
+
+> O Comando acima: npx knex init vai criar um arquivo de configuração chamado knexfile.js
+
+```sh
+module.exports = {
+
+  development: {
+    client: 'sqlite3',
+    connection: {
+      filename: './dev.sqlite3'
+    }
+  }
+}
+```
+
+### Criando migrations no knex
+basta adicionar uma flag na tag "development"
+```sh
+module.exports = {
+
+  development: {
+    client: 'sqlite3',
+    connection: {
+      filename: './dev.sqlite3'
+    },
+    migations:{
+        directory: './migration'
+    }
+  }
+
+}
+```
+
+Migration é tipo um controlador de versão do banco de dados
+Para iniciar um migrate, basta executar o seguinte código
+```sh
+$ npx knex migrate:make create_users
+```
+
+> O Comando acima: npx knex migrate:make create_users vai criar um arquivo de versão dentro da pasta "migration", abaixo segue um exemplo do arquivo
+```sh
+exports.up = function(knex) {
+  return knex.schema.createTable('users', function(table){
+    table.increments();
+    table.string('name');
+    table.timestamps();
+  })
+};
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('users');
+};
+```
+
+Para executar um migrate, basta executar o seguinte código
+```sh
+$ npx knex migrate:latest create_users
+```
+
+> O Comando acima: npx knex migrate:latest create_users vai executar o arquivo de da migarete referente ao name, no caso "create_users"
+> O mesmo vai criar o banco de dados, conforme informado na flag "development.connection.filename"
+
+Para criar uma conexão, basta criar um arquivo e colocar o seguinte código
+
+```sh
+const knex = require('knex');
+const configuration = require('./knexfile');
+
+const connection = knex(configuration.development);
+
+module.exports = connection;
 ```
