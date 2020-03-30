@@ -38,7 +38,7 @@ $ npm install express
 ```
 
 > O Comando acima: npm install express vai modificar o package.json, colocando o pacote do express como uma dependência do projeto
-> Além disseo ele vai criar uma pasta chamada node_modules, é nela que todo pacote e dependência será instalado
+> Além disse ele vai criar uma pasta chamada node_modules, é nela que todo pacote e dependência será instalado
 ```sh
 {
   "name": "nameproject",
@@ -55,4 +55,17 @@ $ npm install express
     "express": "^4.17.1"
   }
 }
+```
+### Para testar o express:
+Crie um arquivo chamado index.js e nele adicione o seguinte comando
+```sh
+const express = require('express');
+const app = express();
+
+app.listen(3333);
+```
+
+Para testar basta executar o seguinte comando:
+```sh
+$ node index.js
 ```
